@@ -1,0 +1,6 @@
+get_ticker_price_api = "https://api.polygon.io/v2/aggs/ticker/{ticker}/prev?adjusted=true&apiKey={api_key}"
+get_ticker_details_api = "https://api.polygon.io/v3/reference/tickers/{ticker}?apiKey={api_key}"
+get_last_trade_api = "https://api.polygon.io/v2/last/trade/{ticker}?apiKey={api_key}"
+get_last_quote_api = "https://api.polygon.io/v2/last/nbbo/{ticker}?apiKey={api_key}"
+get_aggregates_api = "https://api.polygon.io/v2/aggs/ticker/{ticker}/range/{multiplier}/{timespan}/{from_date}/{to_date}?adjusted=true&sort=desc&limit={limit}&apiKey={api_key}"
+get_historic_trades_api = "https://api.polygon.io/v2/ticks/stocks/trades/{ticker}/{date}?apiKey={api_key}&limit={limit}&timestamp={timestamp}"

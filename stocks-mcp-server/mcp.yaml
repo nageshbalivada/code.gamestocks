@@ -1,0 +1,163 @@
+schema_version: "v1"
+id: "polygon-data"
+name: "Polygon Stock Data Tool"
+description: "Fetches real-time stock prices and metadata from Polygon.io"
+version: "0.1"
+
+tools:
+  - id: get_ticker_price
+    description: "Returns the latest stock price for a given ticker"
+    input_schema:
+      type: object
+      properties:
+        ticker:
+          type: string
+          description: "Stock ticker symbol (e.g., AAPL, TSLA)"
+      required: ["ticker"]
+    output_schema:
+      type: object
+      properties:
+        ticker:
+          type: string
+        price:
+          type: number
+        timestamp:
+          type: number
+
+  - id: get_ticker_details
+    description: "Returns company and metadata for a given ticker"
+    input_schema:
+      type: object
+      properties:
+        ticker:
+          type: string
+          description: "Stock ticker symbol"
+      required: ["ticker"]
+    output_schema:
+      type: object
+      properties:
+        name:
+          type: string
+        exchange:
+          type: string
+        locale:
+          type: string
+        market:
+          type: string
+        type:
+          type: string
+
+  - id: get_last_trade
+    description: "Returns the most recent trade for a given stock"
+    input_schema:
+      type: object
+      properties:
+        ticker:
+          type: string
+          description: "Stock ticker symbol"
+      required: ["ticker"]
+    output_schema:
+      type: object
+      properties:
+        price:
+          type: number
+        size:
+          type: number
+        timestamp:
+          type: number
+
+  - id: get_last_quote
+    description: "Returns the most recent NBBO quote for a given stock"
+    input_schema:
+      type: object
+      properties:
+        ticker:
+          type: string
+          description: "Stock ticker symbol"
+      required: ["ticker"]
+    output_schema:
+      type: object
+      properties:
+        askprice:
+          type: number
+        asksize:
+          type: number
+        bidprice:
+          type: number
+        bidsize:
+          type: number
+        timestamp:
+          type: number
+
+  - id: get_aggregates
+    description: "Returns historical aggregated data for a stock over a time range"
+    input_schema:
+      type: object
+      properties:
+        ticker:
+          type: string
+        multiplier:
+          type: integer
+        timespan:
+          type: string
+          enum: ["minute", "hour", "day", "week", "month", "quarter", "year"]
+        from_date:
+          type: string
+          description: "Start date (YYYY-MM-DD)"
+        to_date:
+          type: string
+          description: "End date (YYYY-MM-DD)"
+        limit:
+          type: integer
+      required: ["ticker", "multiplier", "timespan", "from_date", "to_date", "limit"]
+    output_schema:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              o:
+                type: number
+              h:
+                type: number
+              l:
+                type: number
+              c:
+                type: number
+              v:
+                type: number
+              t:
+                type: number
+
+  - id: get_historic_trades
+    description: "Returns historical trade ticks for a stock on a specific date"
+    input_schema:
+      type: object
+      properties:
+        ticker:
+          type: string
+        date:
+          type: string
+          description: "Date in YYYY-MM-DD format"
+        limit:
+          type: integer
+        timestamp:
+          type: integer
+          description: "Unix timestamp in milliseconds"
+      required: ["ticker", "date", "limit", "timestamp"]
+    output_schema:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              p:
+                type: number
+              s:
+                type: integer
+              t:
+                type: number
