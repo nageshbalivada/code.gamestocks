@@ -49,3 +49,7 @@ This should return TSLA stock price
 stocks-polygon-ws-stream
 ```
 2. Only one tool get stock price is FREE from Polygon, other tools like get historical prices don't work at the moment.
+
+
+Timeline
+7.28 - Understand the agent code fully, understand the MCP Server code fully. Enable follow up questions by adding a loop & context
