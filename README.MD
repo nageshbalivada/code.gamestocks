@@ -161,11 +161,9 @@ gamestocks/
 
 ## Documentation
 
-See [REQUIREMENTS.md](REQUIREMENTS.md) for comprehensive technical requirements including:
-- 88+ numbered requirements
-- Full implementation logic for each component
-- Data models and API specifications
-- Error handling and security requirements
+See [demo-agentic-coding/](demo-agentic-coding/) for comprehensive documentation:
+- [source-system-requirements.md](demo-agentic-coding/source-system-requirements.md) - Python system requirements (88+ numbered)
+- [NodeJSMigration-Requirements.md](demo-agentic-coding/NodeJSMigration-Requirements.md) - Node.js migration guide (9 sessions)
 
 ## Future Enhancements
 
