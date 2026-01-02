@@ -1,9 +1,13 @@
+import os
+from dotenv import load_dotenv
 from polygon import WebSocketClient
 from polygon.websocket.models import WebSocketMessage, Feed, Market
 from typing import List
 
+load_dotenv()
+
 client = WebSocketClient(
-	api_key="ksk7jS4bXeDeSd6JC3EX6WJYaHWOpzhs",
+	api_key=os.getenv("POLYGON_API_KEY"),
 	feed=Feed.Delayed,
 	market=Market.Stocks
 	)
